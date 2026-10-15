@@ -43,3 +43,9 @@ npm run test:browser
 ```
 
 详细规划见 `docs/product-plan.md`。后续接入正式接口时，需将 `dist/data.mjs` 的模拟数据查询替换为服务端请求，并在列表、详情、统计和导出接口统一校验访问凭证与 appkey 权限。
+
+## 服务器部署
+
+发布内容为 `dist/` 中的静态文件，无需构建或启动 Node 服务。访问地址为 `http://120.48.82.100:8889/sn-entitlements-demo/`。
+
+每次上传至 `/usr/share/nginx/html/sn-entitlements-demo/sn-entitlements-demo-<时间戳>-<commit>/`，通过 `current` 软链接切换版本，保留历史目录供回滚。Nginx 路由使用 `deploy/nginx-location.conf`，放入现有 8889 端口的 server 配置中；重载前执行 `nginx -t`。该路由包含尾斜杠跳转和 `.mjs` MIME 类型配置。
