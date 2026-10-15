@@ -1,0 +1,11 @@
+{
+  "name": "sn-entitlements-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "check": "node --check dist/app.mjs && node --check dist/data.mjs && node --check dist/upload.mjs && node --check server.mjs"
+  }
+}
